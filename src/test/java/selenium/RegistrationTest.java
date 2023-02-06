@@ -2,7 +2,9 @@ package selenium;
 
 import config.SeleniumConfiguration;
 import form.RegistrationForm;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +26,7 @@ public class RegistrationTest {
     }
 
     @Before
-    public void setup(){
+    public void setup() {
         driver = configuration.getSetup().get();
         driver.get("https://stellarburgers.nomoreparties.site/");
         registrationPage = new RegistrationPage(driver);
@@ -34,7 +36,7 @@ public class RegistrationTest {
 
 
     @Parameterized.Parameters
-    public static Object[] getParameters(){
+    public static Object[] getParameters() {
         return new Object[]{
                 SeleniumConfiguration.chromeConfig(),
                 SeleniumConfiguration.yandexConfig()
@@ -42,7 +44,7 @@ public class RegistrationTest {
     }
 
     @Test
-    public void registration(){
+    public void registration() {
         homePage.clickToAccount();
         loginPage.waitForLoginPage();
         loginPage.clickRegistrationLink();
@@ -53,7 +55,7 @@ public class RegistrationTest {
     }
 
     @Test
-    public void registrationIncorrect(){
+    public void registrationIncorrect() {
         homePage.clickToAccount();
         loginPage.waitForLoginPage();
         loginPage.clickRegistrationLink();
@@ -63,7 +65,7 @@ public class RegistrationTest {
     }
 
     @After
-    public void close(){
+    public void close() {
         driver.quit();
     }
 }

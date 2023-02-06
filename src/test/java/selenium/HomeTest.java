@@ -26,7 +26,7 @@ public class HomeTest {
 
 
     @Before
-    public void setup(){
+    public void setup() {
         driver = configuration.getSetup().get();
         driver.get("https://stellarburgers.nomoreparties.site/");
         loginPage = new LoginPage(driver);
@@ -35,7 +35,7 @@ public class HomeTest {
 
 
     @Parameterized.Parameters
-    public static Object[] getParameters(){
+    public static Object[] getParameters() {
         return new Object[]{
                 SeleniumConfiguration.chromeConfig(),
                 SeleniumConfiguration.yandexConfig()
@@ -43,51 +43,53 @@ public class HomeTest {
     }
 
     @Test
-    public void testAccountPage(){
+    public void testAccountPage() {
         homePage.clickToAccount();
         loginPage.waitForLoginPage();
     }
 
     @Test
-    public void testLogoHomePage(){
+    public void testLogoHomePage() {
         testAccountPage();
         homePage.clickToLogo();
         homePage.waitForHomePageTitle();
     }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
         testAccountPage();
         homePage.clickToConstructor();
         homePage.waitForHomePageTitle();
     }
 
     @Test
-    public void testBunTab(){
-        driver.manage().window().setSize(new Dimension(600,600));
+    public void testBunTab() {
+        driver.manage().window().setSize(new Dimension(600, 600));
         homePage.clickToConstructor();
         homePage.clickToTipsTab();
         homePage.clickToBunTab();
-        Assert.assertEquals( configuration.getBunPosition(), homePage.getBunLocation());
+        Assert.assertEquals(configuration.getBunPosition(), homePage.getBunLocation());
     }
+
     @Test
-    public void testSauceTab(){
-        driver.manage().window().setSize(new Dimension(600,600));
+    public void testSauceTab() {
+        driver.manage().window().setSize(new Dimension(600, 600));
 
         homePage.clickToConstructor();
         homePage.clickToSauceTab();
-        Assert.assertEquals( configuration.getSaucePosition(),homePage.getSauceLocation());
+        Assert.assertEquals(configuration.getSaucePosition(), homePage.getSauceLocation());
     }
+
     @Test
-    public void testTipsTab(){
-        driver.manage().window().setSize(new Dimension(600,600));
+    public void testTipsTab() {
+        driver.manage().window().setSize(new Dimension(600, 600));
         homePage.clickToConstructor();
         homePage.clickToTipsTab();
-        Assert.assertEquals(configuration.getTipsPosition(),homePage.getTipsLocation());
+        Assert.assertEquals(configuration.getTipsPosition(), homePage.getTipsLocation());
     }
 
     @After
-    public void close(){
+    public void close() {
         driver.quit();
     }
 }

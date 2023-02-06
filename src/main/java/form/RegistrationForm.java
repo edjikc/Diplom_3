@@ -13,11 +13,11 @@ public class RegistrationForm {
         this.pass = pass;
     }
 
-    public static RegistrationForm randomFrom(){
+    public static RegistrationForm randomFrom() {
         return new RegistrationForm(UUID.randomUUID().toString(), UUID.randomUUID() + "@test.ru", "123123");
     }
 
-    public static RegistrationForm incorrectPassFrom(){
+    public static RegistrationForm incorrectPassFrom() {
         return new RegistrationForm(UUID.randomUUID().toString(), UUID.randomUUID() + "@test.ru", "123");
     }
 

@@ -4,8 +4,6 @@ import form.LoginForm;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends Page {
 
@@ -26,11 +24,13 @@ public class LoginPage extends Page {
     public void clickRegistrationLink() {
         clickElement(registrationLink);
     }
+
     @Step("Заполнить форму авторизации")
     public void fillLoginForm(LoginForm loginForm) {
         driver.findElement(nameInput).sendKeys(loginForm.getName());
         driver.findElement(passInput).sendKeys(loginForm.getPass());
     }
+
     @Step("Клик по кнопке Войти в аккаунт")
     public void clickToLogin() {
         clickElement(loginButton);

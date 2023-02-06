@@ -4,8 +4,6 @@ import form.RegistrationForm;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegistrationPage extends Page {
 
@@ -23,6 +21,7 @@ public class RegistrationPage extends Page {
     public void waitForRegistrationPage() {
         waitForElement(registrationButton);
     }
+
     @Step("Заполнение формы авторизации")
     public void fillRegistrationForm(RegistrationForm registrationForm) {
         driver.findElement(nameInput).sendKeys(registrationForm.getName());
@@ -34,10 +33,12 @@ public class RegistrationPage extends Page {
     public void clickRegistrationButton() {
         clickElement(registrationButton);
     }
+
     @Step("Клик по кнопке Войти")
     public void clickToLoginLink() {
         clickElement(loginLink);
     }
+
     @Step("Ожидание сообщения Некорректный пароль")
     public void waitPassFieldError() {
         waitForElement(incorrectPassMessage);
